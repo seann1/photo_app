@@ -1,0 +1,23 @@
+<h1>My Photos</h1>
+
+<ul>
+  <% @user.photos.each do |photo| %>
+  <div class="grey">
+    <p><%= image_tag photo.image.url(:medium) %></p>
+    <%= form_for(@tag) do |f| %>
+    <%= hidden_field_tag "user[ids][]", nil %>
+    <% User.all.each do |u| %>
+    <%= check_box_tag "user[ids][]", u.email, id: dom_id(u) %>
+    <%= label_tag dom_id(u), u.email %><br>
+  <% end %>
+    </div>
+    <%= f.submit 'tag' %>
+    <% end %>
+
+    <% end %>
+
+
+
+
+<p><%= link_to "Add a new photo", new_user_photo_path(current_user) %>
+
