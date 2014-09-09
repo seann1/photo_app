@@ -8,11 +8,13 @@ get 'logout', to: 'sessions#destroy', as: 'logout'
 resources :users
 resources :sessions
 
-resources :users do
-  resources :photos do
-    resources :tags
+resources :photos do
+  resources :tags
+end
 
-  end
+
+resources :users do
+  resources :photos
 end
 
 root :to => 'users#index'

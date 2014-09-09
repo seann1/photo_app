@@ -25,6 +25,7 @@ class PhotosController < ApplicationController
   end
 
   def update
+    @photo = Photo.find(params[:id])
     @user = User.find(params[:user_id])
 
     @tag = Tag.create(:user_id => @user.id, :photo_id => @photo.id)

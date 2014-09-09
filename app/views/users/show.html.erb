@@ -5,12 +5,13 @@
   <div class="grey">
     <p><%= image_tag photo.image.url(:medium) %></p>
 
-    <%= form_for([@user, photo, @tag]) do |f| %>
+    <%= form_for([photo, @tag]) do |f| %>
+      <%= hidden_field_tag "tag[user_id]", nil %>
       <%= hidden_field_tag "tag[photo_id]", photo.id %>
       <% User.all.each do |u| %>
 
         <%= check_box_tag "tag[user_id]", u.id %>
-        <%= label_tag dom_id(u), u.email %><br>
+        <%= u.email %><br>
       <% end %>
       <%= f.submit 'tag' %>
     <% end %>

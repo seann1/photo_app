@@ -10,9 +10,8 @@ class TagsController < ApplicationController
   end
 
   def create
-    user_id = request.url.split("/")[4]
     @user = User.find(params[:tag][:user_id])
-    @photo = Photo.find(params[:tag][:photo_id])
+    @photo = Photo.find(params[:photo_id])
     @tag = Tag.create(tag_params)
     if @tag.valid?
       flash[:notice] = "Tags were saved"

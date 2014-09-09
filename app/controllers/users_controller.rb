@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user)
     @users = User.all
     @tag = Tag.new
+    @tags = Tag.all
   end
 
   def update
