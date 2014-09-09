@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+
+  def index
+    if current_user
+
+    else
+      redirect_to signup_path
+    end
+  end
   def new
     @user = User.new
   end
@@ -17,6 +25,7 @@ class UsersController < ApplicationController
     @photos = current_user.photos
     @user = User.find(current_user)
     @users = User.all
+    @tag = Tag.new
   end
 
   def update

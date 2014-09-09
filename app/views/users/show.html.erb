@@ -1,20 +1,22 @@
 <h1>My Photos</h1>
 
-<ul>
-  <% @user.photos.each do |photo| %>
+<% @user.photos.uniq.each do |photo| %>
+
   <div class="grey">
     <p><%= image_tag photo.image.url(:medium) %></p>
-    <%= form_for(@tag) do |f| %>
-    <%= hidden_field_tag "user[ids][]", nil %>
-    <% User.all.each do |u| %>
-    <%= check_box_tag "user[ids][]", u.email, id: dom_id(u) %>
-    <%= label_tag dom_id(u), u.email %><br>
-  <% end %>
-    </div>
-    <%= f.submit 'tag' %>
+
+    <%= form_for([@user, photo, @tag]) do |f| %>
+      <%= hidden_field_tag "tag[photo_id]", photo.id %>
+      <% User.all.each do |u| %>
+
+        <%= check_box_tag "tag[user_id]", u.id %>
+        <%= label_tag dom_id(u), u.email %><br>
+      <% end %>
+      <%= f.submit 'tag' %>
     <% end %>
 
-    <% end %>
+  </div>
+<% end %>
 
 
 
