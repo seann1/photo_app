@@ -1,0 +1,13 @@
+<h1>Photos i'm tagged in</h1>
+
+<% Photo.all.each do |photo| %>
+  <% if photo.tags.user_id == @user.id %>
+
+  <div class="grey">
+    <p><%=link_to image_tag(photo.image.url(:medium)), new_photo_tag_path(photo) %></p>
+
+
+
+  </div>
+  <% end %>
+<% end %>

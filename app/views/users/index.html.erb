@@ -2,6 +2,7 @@
 
 <%= link_to "Upload Photos", new_user_photo_path(current_user) %>
 <%= link_to "My Photos", user_path(current_user.id) %>
+<%= link_to "Photos i'm tagged in", photo_tags_path(current_user.id) %>
 
 <% current_user.photos.uniq.each do |photo| %>
 <div style="text-align:center">
