@@ -1,0 +1,16 @@
+<%= image_tag @photo.image.url(:medium) %>
+
+
+<%= form_for([@photo, @tag]) do |f| %>
+      <%= hidden_field_tag "tag[user_id]", nil %>
+      <%= hidden_field_tag "tag[photo_id]", @photo.id %>
+      <% User.all.each do |u| %>
+
+        <%= check_box_tag "tag[user_id]", u.id %>
+        <%= u.email %><br>
+      <% end %>
+      <%= f.submit 'tag' %>
+    <% end %>
+
+
+<p><%= link_to "Add a new photo", new_user_photo_path(current_user) %></p>

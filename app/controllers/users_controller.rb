@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @photos = current_user.photos
     @user = User.find(current_user)
     @users = User.all
-    @tag = Tag.new
+    # @tag = Tag.new
     @tags = Tag.all
   end
 

@@ -1,5 +1,6 @@
 <%= form_for [@user, @photo], :html => { :multipart => true } do |f| %>
   <p>
+    <%= hidden_field_tag "photo[user_id]", @user.id %>
     <%= f.file_field :image %>
   </p>
   <p><%= f.submit "Submit", :class => "btn btn-warning btn-xs" %></p>

@@ -4,6 +4,7 @@ class TagsController < ApplicationController
     @user = User.find_by_id(user_id)
   end
   def new
+    @photo = Photo.find_by_id(params[:photo_id])
     @tag = Tag.new
     # user_id = request.url.split("/")[4]
     @user = User.find_by_id(current_user)
